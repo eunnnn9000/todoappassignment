@@ -26,3 +26,31 @@ editButtons.forEach(button => {
 });
 
 
+const inputBox = document.getElementById('taskInput');
+const addButton = document.getElementById('addItemBtn');
+
+addButton.addEventListener('click', function() {
+   
+    const inputValue = inputBox.value;
+
+   
+    const newContainer = document.createElement('div');
+    newContainer.classList.add('container');
+    
+    const newRow = document.createElement('div');
+    newRow.textContent = inputValue;
+    
+   
+    newContainer.appendChild(newRow);
+    
+   
+    document.body.appendChild(newContainer);
+
+    inputBox.value = '';
+});
+
+
+
+
+
+
