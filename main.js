@@ -1,24 +1,5 @@
 
-function addItems() {
-    const inputField = document.getElementById('taskInput');
-    const container = document.getElementById('container1');
 
-    inputField.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            const text = inputField.value.trim();
-            
-            if (text !== '') {
-                const newText = document.createElement('div');
-                newText.textContent = text;
-                
-                container.appendChild(newText);
-                inputField.value = '';
-            }
-        }
-    });
-}
-
-addItems();
 
 
 const deleteButtons = document.querySelectorAll('.delete');
