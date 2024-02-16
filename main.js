@@ -1,26 +1,47 @@
-const deleteButtons=document.querySelectorAll('.delete');
 
-deleteButtons.forEach(button=> button.addEventListener(
-    'click',function(){
-        const newTask= this.parentElement;
-        newTask.remove();
-    }
-))
+function addItems() {
+    const inputField = document.getElementById('taskInput');
+    const container = document.getElementById('container1');
+
+    inputField.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            const text = inputField.value.trim();
+            
+            if (text !== '') {
+                const newText = document.createElement('div');
+                newText.textContent = text;
+                
+                container.appendChild(newText);
+                inputField.value = '';
+            }
+        }
+    });
+}
+
+addItems();
 
 
+const deleteButtons = document.querySelectorAll('.delete');
+
+deleteButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        
+        const taskDiv = this.parentElement;
+        taskDiv.remove();
+    });
+});
 
 const editButtons = document.querySelectorAll('.edit');
+
 
 editButtons.forEach(button => {
     button.addEventListener('click', function() {
         const taskDiv = this.parentElement;
-        let originalTaskText = taskDiv.textContent.trim(); // Store the original task text
-        
-        const newTaskText = prompt('Edit task:', originalTaskText);
-
+        const newTaskText = prompt('Edit task:', taskDiv.textContent.trim());
         if (newTaskText !== null) {
             taskDiv.textContent = newTaskText.trim();
-            originalTaskText = newTaskText.trim(); // Update original task text
         }
     });
 });
+
+
