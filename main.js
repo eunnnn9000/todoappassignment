@@ -1,56 +1,64 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('addItemBtn');
+    const input = document.getElementById('taskInput');
+    const container = document.querySelector('.container');
 
+    function createRow(inputText) {
+      
+        const row = document.createElement('div');
+        row.classList.add('row');
 
+     
+        row.style.backgroundColor = 'gray';
+        row.style.color = 'white';
+        row.style.padding = '50px';
+        row.style.marginTop = '10px';
 
+       
+        const content = document.createElement('span');
+        content.textContent = inputText;
+        row.appendChild(content);
 
-const deleteButtons = document.querySelectorAll('.delete');
+       
+        const addButton = document.createElement('button');
+        addButton.textContent = 'Add';
+        addButton.classList.add('add');
 
-deleteButtons.forEach(button => {
-    button.addEventListener('click', function() {
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('delete');
+
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.classList.add('edit');
+
+        row.appendChild(addButton);
+        row.appendChild(deleteButton);
+        row.appendChild(editButton);
+
         
-        const taskDiv = this.parentElement;
-        taskDiv.remove();
-    });
-});
+        deleteButton.addEventListener('click', function() {
+         
+            content.textContent = '';
+        });
 
-const editButtons = document.querySelectorAll('.edit');
+      
+        editButton.addEventListener('click', function() {
+            const newText = prompt('Edit text:', content.textContent);
+            if (newText !== null) {
+                content.textContent = newText;
+            }
+        });
 
+        container.appendChild(row);
+    }
 
-editButtons.forEach(button => {
     button.addEventListener('click', function() {
-        const taskDiv = this.parentElement;
-        const newTaskText = prompt('Edit task:', taskDiv.textContent.trim());
-        if (newTaskText !== null) {
-            taskDiv.textContent = newTaskText.trim();
+        const inputValue = input.value.trim();
+
+        if (inputValue !== '') {
+            createRow(inputValue);
+            input.value = '';
         }
     });
 });
-
-
-const inputBox = document.getElementById('taskInput');
-const addButton = document.getElementById('addItemBtn');
-
-addButton.addEventListener('click', function() {
-   
-    const inputValue = inputBox.value;
-
-   
-    const newContainer = document.createElement('div');
-    newContainer.classList.add('container');
-    
-    const newRow = document.createElement('div');
-    newRow.textContent = inputValue;
-    
-   
-    newContainer.appendChild(newRow);
-    
-   
-    document.body.appendChild(newContainer);
-
-    inputBox.value = '';
-});
-
-
-
-
-
-
