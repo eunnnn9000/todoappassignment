@@ -1,64 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const button = document.getElementById('addItemBtn');
-    const input = document.getElementById('taskInput');
-    const container = document.querySelector('.container');
+const input = document.getElementById('taskInput');
+const button = document.getElementById('addItemBtn');
+const row = document.querySelector('.row'); // Using querySelector to select the first element with the class name "row"
 
-    function createRow(inputText) {
-      
-        const row = document.createElement('div');
-        row.classList.add('row');
+button.addEventListener('click', function() {
+    const inputValue = input.value.trim();
 
-     
-        row.style.backgroundColor = 'gray';
-        row.style.color = 'white';
-        row.style.padding = '50px';
-        row.style.marginTop = '10px';
-
-       
-        const content = document.createElement('span');
-        content.textContent = inputText;
-        row.appendChild(content);
-
-       
-        const addButton = document.createElement('button');
-        addButton.textContent = 'Add';
-        addButton.classList.add('add');
-
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.classList.add('delete');
-
-        const editButton = document.createElement('button');
-        editButton.textContent = 'Edit';
-        editButton.classList.add('edit');
-
-        row.appendChild(addButton);
-        row.appendChild(deleteButton);
-        row.appendChild(editButton);
-
-        
-        deleteButton.addEventListener('click', function() {
-         
-            content.textContent = '';
-        });
-
-      
-        editButton.addEventListener('click', function() {
-            const newText = prompt('Edit text:', content.textContent);
-            if (newText !== null) {
-                content.textContent = newText;
-            }
-        });
-
-        container.appendChild(row);
+    if (inputValue !== '') {
+        const newContent = document.createElement('div');
+        newContent.style.backgroundColor = 'gray';
+        newContent.style.padding = '50px';
+        newContent.textContent = inputValue;
+        row.appendChild(newContent); // Appending to the selected row element
+        input.value = '';
     }
-
-    button.addEventListener('click', function() {
-        const inputValue = input.value.trim();
-
-        if (inputValue !== '') {
-            createRow(inputValue);
-            input.value = '';
-        }
-    });
 });

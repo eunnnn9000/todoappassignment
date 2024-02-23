@@ -19,11 +19,34 @@ cursor: pointer;
 margin-bottom: 50px;
 justify-content: flex-end;}
 
-.add{display: flex;
-justify-content: flex-end;margin-right: 30px;}
 
 
 
-.container .row button {
-    margin-right: 40px; /* Add some margin between buttons */
+
+
+
+.row{background-color: gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding:50px;
+    align-items: flex-end;
+
+
+}
+.add,.delete,.edit{
+    background-color: black;
+    padding: 30px;
+    color:white;
+    border-radius: 30px;
+    border:1px solid white;
+    cursor: pointer;
+    margin-right:10px;
+    height:auto;
+    font-size: 20px;
+}
+
+.row1{position: absolute;
+    left:100px;
+    color:blue;
 }
