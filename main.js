@@ -57,7 +57,7 @@ anotherAddButton.addEventListener('click',function(){
     row.appendChild(deletion);
     row.appendChild(edit);
 
-  
-    })
+ 
+    });
 
 
